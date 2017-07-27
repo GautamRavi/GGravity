@@ -4,3 +4,5 @@ hi
 =======
 https://github.com/GautamRavi/GGravity.git
 >>>>>>> 5ce8a6414f0d740069256fb47b16cd9d9717c13e
+
+visual studio is not connected yet
