@@ -1,8 +1,13 @@
 test document
-<<<<<<< HEAD
 hi
-=======
 https://github.com/GautamRavi/GGravity.git
+<<<<<<< HEAD
 >>>>>>> 5ce8a6414f0d740069256fb47b16cd9d9717c13e
 
 visual studio is not connected yet
+=======
+
+the github repository is now connected
+
+yay its connected
+>>>>>>> 13dff2ce0a5f0d766a020c4702dc109222906728
