@@ -12,3 +12,4 @@ the github repository is now connected
 yay its connected
 >>>>>>> 13dff2ce0a5f0d766a020c4702dc109222906728
 this is connected to the proper repository
+this is the proper repository
