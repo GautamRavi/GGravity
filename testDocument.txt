@@ -1,6 +1,7 @@
 test document
-<<<<<<< HEAD
 hi
-=======
 https://github.com/GautamRavi/GGravity.git
->>>>>>> 5ce8a6414f0d740069256fb47b16cd9d9717c13e
+
+the github repository is now connected
+
+yay its connected
