@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link rel="icon" href="vulkan_lunarg_icon.png">
+<link rel="stylesheet" href="github-markdown.css">
+<style>
+    body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+    }
+</style>
+</head>
+<body>
+<article class="markdown-body">
+<h1>
+<a id="user-content-vulkan-sdk-for-windows-release-notes" class="anchor" href="#user-content-vulkan-sdk-for-windows-release-notes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Vulkan SDK for Windows Release Notes</h1>
+<p><a name="user-content-vsdkrel-1.0.51"></a></p>
+<h2>
+<a id="user-content-vulkan-sdk-1051-release-notes" class="anchor" href="#user-content-vulkan-sdk-1051-release-notes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Vulkan SDK 1.0.51 Release Notes</h2>
+<h5>
+<a id="user-content-version-1051-for-windows" class="anchor" href="#user-content-version-1051-for-windows" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Version 1.0.51 for Windows</h5>
+<h6>
+<a id="user-content-june-15-2017" class="anchor" href="#user-content-june-15-2017" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>June 15, 2017</h6>
+<p>This SDK supports Vulkan API revision 1.0.51.  The prior SDK supported Vulkan API revision 1.0.49.</p>
+<p><strong>Drivers:</strong> LunarG recommends that you update your Vulkan-capable hardware drivers to the latest recommended
+version from your hardware vendor.  A list of <a href="#user-content-known-driver-issues">Known Driver Issues</a> appears at the end of
+this document with more information.</p>
+<p><strong>Valid Usage ID Changes</strong> -- As of this SDK release, the valid usage identification numbers will be changed to accommodate the official valid usage ID management process.
+If you are currently using these IDs to filter messages or for debugging purposes they will need to be remapped.</p>
+<ul>
+<li>The validation checks are driven by Valid Usage (VU) statements in the Vulkan specification.  To improve consistency and stability, the mechanism for defining and mapping unique Valid Usage Identifiers (VUIDs) for each valid usage check has been integrated with the Vulkan Specification generation. VUs now have an associated unique string identifier that will live with the VU in the specification source documents and remain unchanged unless the behavior of the VU itself changes.</li>
+<li>This improvement required that the old VUIDs be remapped to new, permanent VUIDs.  Any code that is dependent on the previous VUID values should be updated to use the new values as of the next SDK release.  To assist in remapping your valid usage ID dependencies, please refer to the <a href="https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers/blob/master/layers/old_vuid_to_new_mapping.txt" TARGET="_blank">mapping file</a>.</li>
+<li>Additionally, the VUIDs in the specification are string-based, but there is a mapping done on the validation side to turn the string-based VUID into a numerical ID. The algorithm for this can be seen in <a href="https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers/blob/master/layers/vuid_mapping.py" TARGET="_blank">vuid_mapping.py</a>. Note that the bits of the new VUIDs encode which struct or function a VU is associated with as well as some other information that may be useful for filtering on the user side.</li>
+<li>If you are actively developing in the <a href="https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers" TARGET="_blank">Vulkan-LoaderAndValidationLayers Github Repository</a>, these changes became active as of <a href="https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers/commit/315b15c3d74eb1df11b992c2b9922cf98e939eb8">this commit</a>.</li>
+</ul>
+<h3>
+<a id="user-content-overview-of-new-features-in-sdk-1051" class="anchor" href="#user-content-overview-of-new-features-in-sdk-1051" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview of new features in SDK 1.0.51</h3>
+<ul>
+<li>Update loader and docs to Vulkan version 1.0.51.</li>
+<li>Visual Studio 2017 templates are now included</li>
+<li>Extensions introduced since the 1.0.51 SDK include:
+<ul>
+<li>VK_AMD_texture_gather_bias_lod (added  the vulkan 1.0.50 specification)</li>
+</ul>
+</li>
+<li>Vulkan Layers have changed:
+<ul>
+<li>The remaining functionality in the VK_LAYER_LUNARG_swapchain layer has been migrated into the VK_LAYER_LUNARG_core_validation layer</li>
+<li>The VK_LAYER_LUNARG_api_dump utility layer has been improved with the addition of an HTML back-end for a better api_dump user experience</li>
+</ul>
+</li>
+<li>VkTrace/VkReplay additions:
+<ul>
+<li>vktraceviewer included in both the Windows and Linux SDKs and is an alpha release.</li>
+<li>vktrace trim feature is now available and has been improved. Trim can be used to specify a frame interval to capture - all other frames are removed from the trace file, resulting in a smaller trace file.</li>
+<li>vktrace has been improved to increase portability of generated trace files across display driver versions.</li>
+</ul>
+</li>
+<li>Scores of bugfixes, validation coverage and accuracy improvements, and many feature additions</li>
+</ul>
+<h4>
+<a id="user-content-important-notes-about-experimental-extensions" class="anchor" href="#user-content-important-notes-about-experimental-extensions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Important Notes About Experimental Extensions</h4>
+<p>The <code>KHX</code> and <code>NVX</code> identifiers in the name indicate that the extension is experimental, and is being considered for
+future standardization.  In the case of a <code>KHX</code> extension, this extension is being considered as either a <code>KHR</code> extension
+or core Vulkan API functionality.  <code>NVX</code> extensions are being considered for either a final <code>NV</code> or a more general
+(<code>EXT</code>, <code>KHR</code>) extension.</p>
+<p>As experimental extensions:</p>
+<ul>
+<li>Developers are encouraged to experiment with them and provide feedback, but <strong>should not</strong> use them as the basis for production applications.</li>
+<li>These experimental extensions are expected to be supported for a limited time only.</li>
+<li>They <strong>may</strong> change their interfaces and behavior in significant ways as a result of feedback</li>
+<li>They <strong>may</strong> be withdrawn or replaced with a different stable (<code>KHR</code>, <code>EXT</code>, ...) extension or core functionality at any time.</li>
+<li>Implementations of these extensions receive limited or no testing when submitted to the Khronos conformance process.</li>
+<li>Using experimental extensions with the validation layers may produce inaccurate validation results.</li>
+</ul>
+<h4>
+<a id="user-content-sdk-components" class="anchor" href="#user-content-sdk-components" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SDK Components</h4>
+<p>This version of the SDK components are based on the following specifications and source code repositories:</p>
+<ul>
+<li>
+<p><a href="https://www.khronos.org/registry/vulkan" TARGET="_blank"><strong>Vulkan Specification including extensions</strong></a></p>
+</li>
+<li>
+<p><a href="https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers/tree/sdk-1.0.51" TARGET="_blank"><strong>Vulkan Loader and Validation</strong></a></p>
+</li>
+<li>
+<p><a href="https://www.khronos.org/registry/spir-v/" TARGET="_blank"><strong>SPIR-V Specification</strong> version 1.1</a></p>
+</li>
+<li>
+<p><a href="https://github.com/KhronosGroup/glslang/commit/91c46c656720a6e1e71a3411cd1f4f792b427b2d" TARGET="_blank"><strong>Glslang library and tools</strong></a></p>
+</li>
+<li>
+<p><a href="https://github.com/KhronosGroup/SPIRV-HEADERS/commit/63e1062a194750b354d48be8c16750d7a4d0dc4e" TARGET="_blank"><strong>SPIR-V headers</strong></a></p>
+</li>
+<li>
+<p><a href="https://github.com/KhronosGroup/SPIRV-Tools/commit/7c8da66bc27cc5c4ccb6a0fa612f56c9417518ff" TARGET="_blank"><strong>SPIR-V tools</strong></a></p>
+</li>
+<li>
+<p><a href="https://github.com/LunarG/VulkanTools/tree/sdk-1.0.51" TARGET="_blank"><strong>Vulkan Tools</strong></a></p>
+</li>
+<li>
+<p><a href="https://github.com/LunarG/VulkanSamples/tree/sdk-1.0.51" TARGET="_blank"><strong>Vulkan Samples</strong></a></p>
+</li>
+</ul>
+<h3>
+<a id="user-content-last-commits-are-designated-by-the-following-git-tags-in-the-respective-repositories" class="anchor" href="#user-content-last-commits-are-designated-by-the-following-git-tags-in-the-respective-repositories" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Last Commits are designated by the following Git Tags in the respective repositories:</h3>
+<ul>
+<li>LoaderAndValidationLayers:    sdk-1.0.51.0</li>
+<li>VulkanTools:                  sdk-1.0.51.0</li>
+<li>VulkanSamples:                sdk-1.0.51.0</li>
+</ul>
+<h3>
+<a id="user-content-fixed-issues" class="anchor" href="#user-content-fixed-issues" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Fixed Issues</h3>
+<p><strong>Fixed Vulkan-LoaderAndValidationLayers Github Issues:</strong></p>
+<ul>
+<li>#1851 core validation: possible image state false positive question</li>
+<li>#1812 VkLayerTest.CopyImageTypeExtentMismatch dies if KHR_maintenance1 is not supported bug</li>
+<li>#1810 Add Validation Checks for Extension Dependencies incomplete</li>
+<li>#1683 Remove remaining husk of Swapchain layer</li>
+<li>#1682 Layer combinations causing some scene objects to not render bug</li>
+<li>#1669 Manifest files not found in ${prefix}/share/vulkan/ bug</li>
+<li>#1649 layers: Clang 32-bit warning: stdcall calling convention ignored on variadic function bug</li>
+</ul>
+<p><strong>Fixed LunarXchange Issues:</strong></p>
+<ul>
+<li>#689 - Visual Studio 2017 Project Templates</li>
+<li>#688 - Vulkan about GL_TEXTURE_EXTERNAL_OES</li>
+<li>#687 - shaderc_combined.lib not usable on Windows</li>
+<li>#686 - In Win10 S, remove Vulkan RT from "Programs and features" will pop out error message</li>
+<li>#685 Loader support for VK_KHR_get_surface_capabilities2 not working</li>
+</ul>
+<p><strong>Fixed VulkanTools Github issues:</strong></p>
+<ul>
+<li>#249 layersvt install libs into wrong destination (hardcoded)</li>
+</ul>
+<p><strong>Fixed VulkanSamples Github issues:</strong></p>
+<ul>
+<li>#135 Messages not being logged with debug callback function</li>
+<li>#133 instance_layer_extension_properties ,instance_layer_properties and enable_validation_with_callback samples not able to use layers.</li>
+</ul>
+<h3>
+<a id="user-content-known-issues" class="anchor" href="#user-content-known-issues" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Known Issues</h3>
+<ul>
+<li>Loader and validation layer open issues are available in the <a href="https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers/issues" TARGET="_blank">Vulkan-LoaderAndValidationLayers Github Repository</a>
+</li>
+<li>VkTrace and other tool-related open issues are available in the <a href="https://github.com/LunarG/VulkanTools/issues" TARGET="_blank">VulkanTools Github Repository</a>
+</li>
+<li>Vulkan Sample-related open issues are available in the <a href="https://github.com/LunarG/VulkanSamples/issues" TARGET="_blank">VulkanSamples Github Repository</a>
+</li>
+</ul>
+<h3>
+<a id="user-content-known-driver-issues" class="anchor" href="#user-content-known-driver-issues" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Known Driver Issues</h3>
+<p>None</p>
+</article>
+</body>
+</html>
