@@ -3,11 +3,8 @@
     "",
     "\\Gravity",
     "\\Gravity\\1.0.51.0",
-    "\\Gravity\\1.0.51.0\\Demos",
-    "\\Gravity\\1.0.51.0\\Include",
-    "\\Gravity\\1.0.51.0\\Include\\vulkan",
     "\\Gravity\\Gravity"
   ],
-  "SelectedNode": "\\Gravity\\1.0.51.0\\Demos\\DEMOS.sln",
+  "SelectedNode": "\\Gravity\\Gravity\\Gravity.vcxproj",
   "PreviewInSolutionExplorer": false
 }
