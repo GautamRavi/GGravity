@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Gravity"
+    "\\Gravity",
+    "\\Gravity\\1.0.51.0",
+    "\\Gravity\\Gravity"
   ],
-  "SelectedNode": "\\Gravity\\Gravity",
+  "SelectedNode": "\\Gravity\\Gravity\\Gravity.vcxproj",
   "PreviewInSolutionExplorer": false
 }
