@@ -86,12 +86,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\1.0.51.0\Include;..\1.0.51.0\Third-Party\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\1.0.54.0\Include;..\..\1.0.54.0\Third-Party\Include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>..\1.0.51.0\Lib32\vulkan-1.lib;..\1.0.51.0\Third-Party\Bin32\SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\..\1.0.54.0\Lib32\vulkan-1.lib;..\..\1.0.54.0\Third-Party\Bin32\SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(VULKAN_SDK)\Lib32;$(VULKAN_SDK)\Third-Party\Bin32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
